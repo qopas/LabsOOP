@@ -1,6 +1,9 @@
-package LAb1.model;
+package Lab1.models;
 
- enum StudyField {
+import java.io.Serializable;
+
+
+enum StudyField implements Serializable {
     MEHANICAL_ENGINEERING("MEHANICAL_ENGINEERING"),
     SOFTWARE_ENGINEERING("SOFTWARE_ENGINEERING"),
     FOOD_TECHNOLOGY("FOOD_TECHNOLOGY"),

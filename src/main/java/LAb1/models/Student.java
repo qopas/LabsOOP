@@ -1,53 +1,22 @@
-package LAb1.model;
+package Lab1.models;
 
-
+import java.io.Serializable;
 import java.util.Date;
 
-class Student {
+/**
+ * Student class
+ * student field and basic methods
+ */
+public class Student implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
     private Date enrolimentDate;
     private Date dateOFBirth;
     private Boolean graduated;
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getEnrolimentDate() {
-        return enrolimentDate;
-    }
-
-    public void setEnrolimentDate(Date enrolimentDate) {
-        this.enrolimentDate = enrolimentDate;
-    }
-
-    public Date getDateOFBirth() {
-        return dateOFBirth;
-    }
-
-    public void setDateOFBirth(Date dateOFBirth) {
-        this.dateOFBirth = dateOFBirth;
     }
 
     public Boolean getGraduated() {
@@ -68,5 +37,17 @@ class Student {
     }
     public void graduate(){
         this.setGraduated(true);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", enrolimentDate=" + enrolimentDate +
+                ", dateOFBirth=" + dateOFBirth +
+                ", graduated=" + graduated +
+                '}';
     }
 }
