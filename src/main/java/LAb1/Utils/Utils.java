@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 public class Utils {
     public static final String RED = "\u001B[31m";
     public static final String RESET = "\u001B[0m";
-    public static final String PATH_logs = "C:\\Users\\user\\IdeaProjects\\LabsOOP\\universityLogs.log";
-    public static final String PATH_state =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\universityInfo.ser";
-    public static final String PATH_enrollStudent =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\studentEnroll";
-    public static final String PATH_graduateStudent =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\studentGraduate";
+    public static final String PATH_logs = "C:\\Users\\user\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab1\\files\\universityLogs.log";
+    public static final String PATH_state =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab1\\files\\universityInfo.ser";
+    public static final String PATH_enrollStudent =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab1\\files\\studentEnroll";
+    public static final String PATH_graduateStudent =  "C:\\Users\\user\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab1\\files\\studentGraduate";
     public static String[] parseInput(String input) {
         return input.split("/");
     }

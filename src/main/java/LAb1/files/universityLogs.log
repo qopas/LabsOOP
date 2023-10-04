@@ -6,3 +6,9 @@ Oct 04, 2023 5:37:08 PM Lab1.models.Faculty addStudent
 WARNING: FAIL TO CREATE STUDENT: ParseException  das/das/das/da/das/das/
 Oct 04, 2023 6:33:31 PM Lab1.Utils.StudentBatch enrollment
 INFO: STUDENT BATCH ENORLEMENT COMPLETE
+Oct 04, 2023 9:51:02 PM Lab1.models.University addFaculty
+WARNING: Invalid study field input: das
+Oct 04, 2023 9:52:06 PM Lab1.models.University addFaculty
+INFO: Faculty createdFaculty{name='Calculatoare', abbreviation='FCIM', studentList=[], studyField=SOFTWARE_ENGINEERING}
+Oct 04, 2023 9:52:22 PM Lab1.models.University addFaculty
+INFO: Faculty createdFaculty{name='Alimentare', abbreviation='ALIM', studentList=[], studyField=FOOD_TECHNOLOGY}
