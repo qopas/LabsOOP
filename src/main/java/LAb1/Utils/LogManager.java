@@ -6,7 +6,7 @@ import java.util.logging.*;
 /**
  * LogManager class
  * contain configuration of Logger
- * 1 - no output in console
+ * 1 - no output of logs in console
  * 2 - file to save all logs, with append = true to not overwrite logs
  */
 public class LogManager {
