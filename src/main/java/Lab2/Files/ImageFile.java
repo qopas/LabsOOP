@@ -2,11 +2,11 @@ package Lab2.Files;
 
 import java.util.Date;
 
-class ImageFile extends File {
+public class ImageFile extends File {
     private String imageSize;
 
-    public ImageFile(String filename, Date creationTime, Date updateTime, String imageSize) {
-        super(filename, "png", creationTime, updateTime);
+    public ImageFile(String filename,String extension, Date creationTime, Date updateTime, String imageSize) {
+        super(filename, extension, creationTime, updateTime);
         this.imageSize = imageSize;
     }
 

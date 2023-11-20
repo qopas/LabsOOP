@@ -2,7 +2,7 @@ package Lab2.Files;
 
 import java.util.Date;
 
-class TextFile extends File {
+public class TextFile extends File {
     private int lineCount;
     private int wordCount;
     private int characterCount;

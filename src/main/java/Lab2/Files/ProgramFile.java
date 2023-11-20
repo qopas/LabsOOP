@@ -2,14 +2,14 @@ package Lab2.Files;
 
 import java.util.Date;
 
-class ProgramFile extends File {
+public class ProgramFile extends File {
     private int lineCount;
     private int classCount;
     private int methodCount;
 
-    public ProgramFile(String filename, Date creationTime, Date updateTime,
+    public ProgramFile(String filename,String extension, Date creationTime, Date updateTime,
                        int lineCount, int classCount, int methodCount) {
-        super(filename, "java", creationTime, updateTime);
+        super(filename, extension, creationTime, updateTime);
         this.lineCount = lineCount;
         this.classCount = classCount;
         this.methodCount = methodCount;

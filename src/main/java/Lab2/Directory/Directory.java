@@ -1,18 +1,29 @@
 package Lab2.Directory;
-import Lab2.Files.File;
-
-import java.util.ArrayList;
-import java.util.List;
+import Lab2.Files.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Directory {
     private List<File> files;
+    private Map<Path, Boolean> fileChanges;
 
-    public Directory() {
+    public Directory(String directoryPath) {
         this.files = new ArrayList<>();
+        this.fileChanges = new HashMap<>();
+        populateFiles(directoryPath);
     }
 
-    public void addFile(File file) {
-        files.add(file);
+    private void populateFiles(String directoryPath) {
+        try {
+            Files.walk(Paths.get(directoryPath))
+                    .filter(Files::isRegularFile)
+                    .forEach(f -> FileFactory.createFile(f, this));
+        } catch (IOException e) {
+            System.out.println("Error populating files: " + e.getMessage());
+        }
     }
 
     public File getFile(String filename) {
@@ -24,29 +35,11 @@ public class Directory {
         return null;
     }
 
-    public void printFileInfo(String filename) {
-        File file = getFile(filename);
-        if (file != null) {
-            file.printInfo();
-        } else {
-            System.out.println("File not found.");
-        }
+    public List<File> getFiles() {
+        return files;
     }
 
-    public void printAllFileInfo() {
-        for (File file : files) {
-            file.printInfo();
-            System.out.println();
-        }
-    }
-
-    public void updateFileInformation(String filename) {
-        File file = getFile(filename);
-        if (file != null) {
-            // Update file information based on the file type
-            // ...
-        } else {
-            System.out.println("File not found.");
-        }
+    public Map<Path, Boolean> getFileChanges() {
+        return fileChanges;
     }
 }
