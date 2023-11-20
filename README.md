@@ -1,2 +1,8 @@
 # LabsOOP
 OOP Labs
+
+
+
+
+
+AȘ VREA SA FIU UN SPIRIDUS CU O VIOARA ȘI UN ARCUȘ
