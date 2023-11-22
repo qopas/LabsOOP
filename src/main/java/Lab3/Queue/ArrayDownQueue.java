@@ -1,6 +1,6 @@
 package Lab3.Queue;
 
-class ArrayDownQueue<T> implements Queue<T> {
+public class ArrayDownQueue<T> implements Queue<T> {
     private Object[] array;
     private int front;
     private int rear;
@@ -19,15 +19,14 @@ class ArrayDownQueue<T> implements Queue<T> {
             throw new IllegalStateException("Queue is full");
         }
 
-        if (front == -1) {
-            front = array.length - 1;
+        if (isEmpty()) {
+            front = rear = array.length - 1;
+        } else {
+            rear = (rear - 1 + array.length) % array.length;
         }
-
-        rear = (rear - 1 + array.length) % array.length;
         array[rear] = element;
         size++;
     }
-
     @Override
     public T dequeue() {
         if (isEmpty()) {

@@ -1,6 +1,6 @@
 package Lab3.Queue;
 
-class LinkedQueue<T> implements Queue<T> {
+public class LinkedQueue<T> implements Queue<T> {
     private Node<T> front;
     private Node<T> rear;
     private int size;
@@ -51,7 +51,7 @@ class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public boolean isFull() {
-        return false;
+        return size == 5;
     }
 
     @Override

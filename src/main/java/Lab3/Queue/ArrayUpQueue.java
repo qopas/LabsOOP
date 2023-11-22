@@ -1,6 +1,6 @@
 package Lab3.Queue;
 
-class ArrayUpQueue<T> implements Queue<T> {
+public class ArrayUpQueue<T> implements Queue<T> {
     private Object[] array;
     private int front;
     private int rear;

@@ -1,6 +1,6 @@
 package Lab3.Queue;
 
-interface Queue<T> {
+public interface Queue<T> {
     void enqueue(T element);
     T dequeue();
     boolean isEmpty();

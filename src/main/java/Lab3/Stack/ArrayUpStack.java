@@ -1,13 +1,13 @@
 package Lab3.Stack;
 
-public class ArrayDownStack<T> implements Stack<T> {
+public class ArrayUpStack<T> implements Stack<T> {
     private Object[] array;
     private int top;
     private int size;
 
-    public ArrayDownStack(int capacity) {
+    public ArrayUpStack(int capacity) {
         array = new Object[capacity];
-        top = 0;
+        top = -1;
         size = 0;
     }
 
@@ -16,8 +16,7 @@ public class ArrayDownStack<T> implements Stack<T> {
         if (isFull()) {
             throw new IllegalStateException("Stack is full");
         }
-
-        top = (top - 1 + array.length) % array.length;
+        top = (top + 1) % array.length;
         array[top] = element;
         size++;
     }
@@ -29,7 +28,7 @@ public class ArrayDownStack<T> implements Stack<T> {
         }
 
         T data = (T) array[top];
-        top = (top + 1) % array.length;
+        top = (top - 1 + array.length) % array.length;
         size--;
 
         return data;

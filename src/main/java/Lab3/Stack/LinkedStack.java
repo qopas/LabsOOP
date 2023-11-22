@@ -1,24 +1,24 @@
 package Lab3.Stack;
 
-public class ArrayDownStack<T> implements Stack<T> {
-    private Object[] array;
-    private int top;
+public class LinkedStack<T> implements Stack<T> {
+    private Node<T> top;
     private int size;
 
-    public ArrayDownStack(int capacity) {
-        array = new Object[capacity];
-        top = 0;
-        size = 0;
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+
+        Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
     @Override
     public void push(T element) {
-        if (isFull()) {
-            throw new IllegalStateException("Stack is full");
-        }
-
-        top = (top - 1 + array.length) % array.length;
-        array[top] = element;
+        Node<T> newNode = new Node<>(element);
+        newNode.next = top;
+        top = newNode;
         size++;
     }
 
@@ -28,8 +28,8 @@ public class ArrayDownStack<T> implements Stack<T> {
             throw new IllegalStateException("Stack is empty");
         }
 
-        T data = (T) array[top];
-        top = (top + 1) % array.length;
+        T data = top.data;
+        top = top.next;
         size--;
 
         return data;
@@ -41,7 +41,7 @@ public class ArrayDownStack<T> implements Stack<T> {
             throw new IllegalStateException("Stack is empty");
         }
 
-        return (T) array[top];
+        return top.data;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ArrayDownStack<T> implements Stack<T> {
 
     @Override
     public boolean isFull() {
-        return size == array.length;
+        return size == 5;
     }
 
     @Override
