@@ -1,23 +1,16 @@
 package Lab3.Stack;
 
+import Lab3.LinkedList.Node;
+
 public class LinkedStack<T> implements Stack<T> {
     private Node<T> top;
     private int size;
 
-    private static class Node<T> {
-        T data;
-        Node<T> next;
-
-        Node(T data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     @Override
     public void push(T element) {
         Node<T> newNode = new Node<>(element);
-        newNode.next = top;
+        newNode.setNext(top);
         top = newNode;
         size++;
     }
@@ -28,8 +21,8 @@ public class LinkedStack<T> implements Stack<T> {
             throw new IllegalStateException("Stack is empty");
         }
 
-        T data = top.data;
-        top = top.next;
+        T data = top.getData();
+        top = top.getNext();
         size--;
 
         return data;
@@ -41,7 +34,7 @@ public class LinkedStack<T> implements Stack<T> {
             throw new IllegalStateException("Stack is empty");
         }
 
-        return top.data;
+        return top.getData();
     }
 
     @Override

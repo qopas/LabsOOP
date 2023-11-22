@@ -21,14 +21,12 @@ class QueueTest {
         assertFalse(linkedQueue.isEmpty());
         assertFalse(linkedQueue.isFull());
 
-
         assertEquals(1, linkedQueue.dequeue());
         assertEquals(2, linkedQueue.dequeue());
 
         assertEquals(1, linkedQueue.size());
         assertFalse(linkedQueue.isEmpty());
         assertFalse(linkedQueue.isFull());
-
 
         linkedQueue.enqueue(4);
         linkedQueue.enqueue(5);
