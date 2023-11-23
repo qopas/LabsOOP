@@ -1,8 +1,4 @@
 # LabsOOP
 OOP Labs
 
-
-
-
-
-AȘ VREA SA FIU UN SPIRIDUS CU O VIOARA ȘI UN ARCUȘ
+[Laboratory 1][https://github.com/qopas/LabsOOP/tree/master/src/main/java/LAb1]
