@@ -13,11 +13,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class DirectoryMonitor {
-    private static final String directoryPath= "C:\\Users\\user\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab2\\labFiles";
+    private static final String directoryPath= "C:\\Users\\dimul\\IdeaProjects\\LabsOOP\\src\\main\\java\\Lab2\\labFiles";
     private static Lock lock = new ReentrantLock();
+    private static Directory directory = new Directory(directoryPath);
 
     public static void run() {
-        Directory directory = new Directory(directoryPath);
         SnapshotManager snapshotManager = new SnapshotManager(directory);
         Thread snapshotThread = new Thread(() -> {
             try {
@@ -25,7 +25,7 @@ public class DirectoryMonitor {
                 Path directoryPathObj = Paths.get(directoryPath);
                 directoryPathObj.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY, StandardWatchEventKinds.ENTRY_DELETE);
                 while (true) {
-                    WatchKey key = watchService.poll(10, TimeUnit.SECONDS);
+                    WatchKey key = watchService.poll(5, TimeUnit.SECONDS);
                     if (key != null) {
                         List<WatchEvent<?>> events = key.pollEvents();
                         snapshotManager.processEvents(events, Paths.get(directoryPath));
@@ -37,7 +37,6 @@ public class DirectoryMonitor {
             }
         });
 
-        snapshotThread.setDaemon(true);
         snapshotThread.start();
         appLoop(snapshotManager,directory);
     }

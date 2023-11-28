@@ -1,7 +1,7 @@
 package Lab2.Directory;
-import Lab2.Files.File;
 import Lab2.Files.FileFactory;
 
+import java.io.File;
 import java.nio.file.*;
 import java.nio.file.Path;
 import java.util.Date;
@@ -36,13 +36,12 @@ public class SnapshotManager {
             } finally {
                 lock.unlock();
             }
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 0, 5, TimeUnit.SECONDS);
     }
 
     public void processEvents(List<WatchEvent<?>> events, Path directoryPath) {
         Date snapshotTime = new Date();
         System.out.println("Created Snapshot at: " + snapshotTime);
-        lock.lock();
         try {
             for (WatchEvent<?> event : events) {
                 if (event.kind() == StandardWatchEventKinds.OVERFLOW) {
@@ -57,11 +56,14 @@ public class SnapshotManager {
                 }
                 if(event.kind() == StandardWatchEventKinds.ENTRY_DELETE){
                     directory.getFileChanges().put(p, null);
+                    directory.getFiles().remove(directory.getFile(p.getFileName().toString()));
+                }
+                if(event.kind() == StandardWatchEventKinds.ENTRY_MODIFY){
+                    FileFactory.updateFile(p,directory.getFile(p.getFileName().toString()));
                 }
                 System.out.println("Event: " + event.kind() + ", File: " + pathEvent.context().toString());
             }
         } finally {
-            lock.unlock();
         }
     }
 

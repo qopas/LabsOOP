@@ -7,6 +7,7 @@ public class TextFile extends File {
     private int wordCount;
     private int characterCount;
 
+
     public TextFile(String filename, Date creationTime, Date updateTime,
                     int lineCount, int wordCount, int characterCount) {
         super(filename, "txt", creationTime, updateTime);
@@ -24,5 +25,29 @@ public class TextFile extends File {
         System.out.println("Line count: " + lineCount);
         System.out.println("Word count: " + wordCount);
         System.out.println("Character count: " + characterCount);
+    }
+
+    public int getLineCount() {
+        return lineCount;
+    }
+
+    public void setLineCount(int lineCount) {
+        this.lineCount = lineCount;
+    }
+
+    public int getWordCount() {
+        return wordCount;
+    }
+
+    public void setWordCount(int wordCount) {
+        this.wordCount = wordCount;
+    }
+
+    public int getCharacterCount() {
+        return characterCount;
+    }
+
+    public void setCharacterCount(int characterCount) {
+        this.characterCount = characterCount;
     }
 }

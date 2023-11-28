@@ -25,4 +25,28 @@ public class ProgramFile extends File {
         System.out.println("Class count: " + classCount);
         System.out.println("Method count: " + methodCount);
     }
+
+    public int getLineCount() {
+        return lineCount;
+    }
+
+    public void setLineCount(int lineCount) {
+        this.lineCount = lineCount;
+    }
+
+    public int getClassCount() {
+        return classCount;
+    }
+
+    public void setClassCount(int classCount) {
+        this.classCount = classCount;
+    }
+
+    public int getMethodCount() {
+        return methodCount;
+    }
+
+    public void setMethodCount(int methodCount) {
+        this.methodCount = methodCount;
+    }
 }

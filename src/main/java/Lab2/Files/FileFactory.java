@@ -93,8 +93,8 @@ public class FileFactory {
     private static ProgramFile createProgramFile(Path filePath) throws IOException {
         List<String> lines = Files.readAllLines(filePath);
         int lineCount = lines.size();
-        int classCount = (int) lines.stream().filter(line -> line.contains("class ")).count();
-        int methodCount = (int) lines.stream().filter(line -> line.contains("void ") || line.contains("int ")).count();
+        int classCount = (int) lines.stream().filter(line -> line.contains("class")).count();
+        int methodCount = (int) lines.stream().filter(line -> line.contains("void ") || line.contains("int ") || line.contains("def ")).count();
 
         return new ProgramFile(
                 filePath.getFileName().toString(),
@@ -129,4 +129,59 @@ public class FileFactory {
         int dotIndex = filename.lastIndexOf('.');
         return (dotIndex == -1) ? "" : filename.substring(dotIndex + 1);
     }
+    public static void updateFile(Path filePath, File file) {
+        String filename = filePath.getFileName().toString();
+        String fileExtension = getFileExtension(filename);
+        try {
+            switch (fileExtension.toLowerCase()) {
+                case "txt":
+                    updateTextFile(filePath, (TextFile) file);
+                    break;
+                case "png":
+                case "jpg":
+                    updateImageFileAttributes(filePath, (ImageFile) file);
+                    break;
+                case "py":
+                case "java":
+                    updateProgramFileAttributes(filePath, (ProgramFile) file);
+                    break;
+                default:
+                    break;
+            }
+        } catch (IOException e) {
+            System.out.println("Error creating file: " + e.getMessage());
+        }
+    }
+    private static void updateTextFile(Path filePath, TextFile textFile) throws IOException {
+        List<String> lines = Files.readAllLines(filePath);
+        int lineCount = lines.size();
+        int wordCount = Arrays.stream(lines.stream()
+                        .map(line -> line.split("\\s+"))
+                        .toArray(String[][]::new))
+                .flatMap(Arrays::stream)
+                .filter(word -> !word.isEmpty())
+                .toArray()
+                .length;
+        int characterCount = lines.stream()
+                .mapToInt(String::length)
+                .sum();
+
+        textFile.setLineCount(lineCount);
+        textFile.setWordCount(wordCount);
+        textFile.setCharacterCount(characterCount);
+    }
+    private static void updateImageFileAttributes(Path filePath, ImageFile imageFile) throws IOException {
+        String imageSize = getImageSize(filePath);
+        imageFile.setImageSize(imageSize);
+    }
+    private static void updateProgramFileAttributes(Path filePath, ProgramFile programFile) throws IOException {
+        List<String> lines = Files.readAllLines(filePath);
+        int lineCount = lines.size();
+        int classCount = (int) lines.stream().filter(line -> line.contains("class")).count();
+        int methodCount = (int) lines.stream().filter(line -> line.contains("void ") || line.contains("int ") || line.contains("def ")).count();
+        programFile.setLineCount(lineCount);
+        programFile.setClassCount(classCount);
+        programFile.setMethodCount(methodCount);
+    }
+
 }

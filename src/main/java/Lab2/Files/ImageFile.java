@@ -18,4 +18,12 @@ public class ImageFile extends File {
         System.out.println("Updated: " + getUpdateTime());
         System.out.println("Image size: " + imageSize);
     }
+
+    public String getImageSize() {
+        return imageSize;
+    }
+
+    public void setImageSize(String imageSize) {
+        this.imageSize = imageSize;
+    }
 }
